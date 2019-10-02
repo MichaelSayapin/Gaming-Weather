@@ -2,7 +2,7 @@ const request = require('request');
 
 const requestOptions = {};
 const {
-    API_KEY = 'cc2f1950ce7678ce3a3b78a7d97d999b',
+    API_KEY = 'YOUR API KEY',
     latitude = 32.07682,
     longitude = 34.79278
 } = requestOptions;
