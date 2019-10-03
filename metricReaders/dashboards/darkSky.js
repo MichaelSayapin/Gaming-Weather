@@ -8,7 +8,7 @@ const {
 } = requestOptions;
 
 function getWeather(callback) {
-    const weatherURL = `https://api.darksky.net/forecast/${API_KEY}/${latitude},${longitude}?units=si&exclude=minutely`;
+    const weatherURL = `https://api.darksky.net/forecast/${API_KEY}/${latitude},${longitude}?units=ca`;
 
     request.get(weatherURL, {json: true}, (error, {body}) => {
         if (error) {
