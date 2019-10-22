@@ -1,11 +1,16 @@
 const Influx = require('influx');
 const unix = require('unix-timestamp');
 
+const {
+    HOST: host,
+    DATABASE: database
+} = process.env;
+
 class MetricsWriter {
     constructor() {
         this.influx = new Influx.InfluxDB({
-            host: 'influxdb01.naturalint.com',
-            database: 'gaming_weather',
+            host,
+            database,
             schema: [{
                 fields: {
                     currentTemperature: Influx.FieldType.FLOAT,
