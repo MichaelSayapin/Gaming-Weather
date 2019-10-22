@@ -1,3 +1,3 @@
-const index = require('./index.js');
+const index = require('./index');
 
 index.handler();

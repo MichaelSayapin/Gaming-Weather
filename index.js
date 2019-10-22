@@ -1,20 +1,19 @@
-const darkSkyReader = require('./metricReaders/dashboards/darkSky.js');
+const darkSkyReader = require('./darkSky');
 
-const MetricsWriter = require('./metricsWriter.js');
-const weatherMetricWriter = new MetricsWriter();
+const WeatherWriter = require('./metricsWriter');
+const weatherDataWriter = new WeatherWriter();
 
-const READERS = {
-    'DarkSky': {read: darkSkyReader.getWeather, write: weatherMetricWriter},
+const READER = {
+    'DarkSky': {read: darkSkyReader.getWeather, write: weatherDataWriter},
 };
 
 const handler = async () => {
-    await Promise.all(Object.entries(READERS).map(async reader => {
+    await Promise.all(Object.entries(READER).map(async reader => {
         try {
-            console.info(`INFO data for ${reader[0]}`);
-            reader[1].read(data => {
-                reader[1].write.distributeData(data);
-                console.info(`INFO done for ${reader[0]}`);
-            });
+            console.info(`Fetching INFO for ${reader[0]}`);
+            const data = await reader[0].read();
+            await reader[1].write.distributeData(data);
+            console.info(`Fetching INFO for ${reader[0]} is done`);
         } catch (e) {
             console.error(`ERROR getting data for ${reader[0]}`, e);
         }
