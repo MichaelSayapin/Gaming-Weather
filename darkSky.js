@@ -1,9 +1,9 @@
 const request = require('request-promise');
 
 const {
-    API_KEY : apiKey,
-    LATITUDE : latitude,
-    LONGITUDE : longitude
+    API_KEY: apiKey,
+    LATITUDE: latitude,
+    LONGITUDE: longitude
 } = process.env;
 
 async function getWeather() {

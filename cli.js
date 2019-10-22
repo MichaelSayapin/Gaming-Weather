@@ -8,16 +8,18 @@ cli
     .option("-n, --name [name]")
     .option("-f, --file [file]")
     .parse(process.argv);
-if (cli.name&&cli.file) {
+if (cli.name && cli.file) {
     let file = fs.readFileSync(cli.file);
     var params = {
         FunctionName: cli.name,
         Publish: true,
         ZipFile: file
     };
-    lambda.updateFunctionCode(params).promise().then(x=>console.log(x)).catch(x=>{console.error(x); throw x;});
-}
-else {
+    lambda.updateFunctionCode(params).promise().then(x => console.log(x)).catch(x => {
+        console.error(x);
+        throw x;
+    });
+} else {
     console.log("wrong parameters, see --help");
     process.exit(-1);
 }
