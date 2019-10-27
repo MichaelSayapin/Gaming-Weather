@@ -9,8 +9,6 @@
   "author": "Michael Sayapin",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.553.0",
-    "commander": "^3.0.2",
     "influx": "^5.0.7",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
