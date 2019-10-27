@@ -7,11 +7,13 @@ const {
 } = process.env;
 
 class MetricsWriter {
-    constructor() {
+    constructor(measurement) {
+        this.measurement = measurement;
         this.influx = new Influx.InfluxDB({
             host,
             database,
             schema: [{
+                measurement: this.measurement,
                 fields: {
                     currentTemperature: Influx.FieldType.FLOAT,
                     currentHumidity: Influx.FieldType.FLOAT,
